@@ -4,7 +4,7 @@ function photographerTemplate(data) {
   const picture = `assets/Sample Photos/Photographers ID Photos/${portrait}`;
 
   const template = `
-      <img src="${picture}" alt="${name}">
+      <img src="${picture}" alt="Portrait photo de ${name}">
       <h2>${name}</h2>
       <div class="description">
         <p>${city}, ${country}</p>

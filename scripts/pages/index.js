@@ -1,3 +1,5 @@
+import photographerTemplate from '../templates/photographer';
+
 async function getPhotographers() {
   const url = './data/photographers.json';
   let data;

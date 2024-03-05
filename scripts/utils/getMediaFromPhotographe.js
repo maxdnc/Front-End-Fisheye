@@ -4,7 +4,7 @@ export default async function getMediaFromPhotographer(photographerId) {
     const response = await fetch(urlPhotographersData);
     const data = await response.json();
     const media = data.media.filter(
-      (media) => media.photographerId === Number(photographerId)
+      (item) => item.photographerId === Number(photographerId)
     );
 
     return media;

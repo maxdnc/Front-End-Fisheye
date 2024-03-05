@@ -12,6 +12,7 @@
     "no-console": "off",
     "object-curly-newline": "off",
     "import/extensions": "off",
-    "comma-dangle": "off" // Disabled missing trailing comma rule
+    "comma-dangle": "off",
+    "max-classes-per-file": "off"
   }
 }

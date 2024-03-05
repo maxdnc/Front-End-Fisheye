@@ -8,7 +8,7 @@ export default function createPhotographerHeader({
   const picture = `assets/Sample Photos/Photographers ID Photos/${portrait}`;
   return `
       <div>
-        <h2 class="photographer__name">${name}</h2>
+        <h1 class="photographer__name">${name}</h1>
         <p class="photographer__location">${city}, ${country}</p>
         <p class="photographer__tagline">${tagline}</p>
       </div>

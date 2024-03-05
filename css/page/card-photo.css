@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.card__photo {
+.card__media {
   width: 350px;
   height: 300px;
   object-fit: cover;

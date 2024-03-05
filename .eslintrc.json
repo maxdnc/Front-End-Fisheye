@@ -12,6 +12,6 @@
     "no-console": "off",
     "object-curly-newline": "off",
     "import/extensions": "off",
-    "trailingComma": "es5"
+    "comma-dangle": "off" // Disabled missing trailing comma rule
   }
 }

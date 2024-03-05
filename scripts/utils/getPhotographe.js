@@ -8,7 +8,7 @@ export default async function getPhotographe(id) {
     }
     data = await response.json();
     const photographer = data.photographers.find(
-      (photographer) => photographer.id === Number(id)
+      (item) => item.id === Number(id)
     );
     data = await photographer;
   } catch (error) {

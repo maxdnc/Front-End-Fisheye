@@ -11,7 +11,6 @@ export default async function getPhotographe(id) {
       (photographer) => photographer.id === Number(id)
     );
     data = await photographer;
-    console.log('photographe', data);
   } catch (error) {
     console.error('Error:', error.message);
   }

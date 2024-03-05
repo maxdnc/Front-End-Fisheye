@@ -4,7 +4,7 @@ class ImageMedia {
   }
 
   display() {
-    return `<img src="${this.source}" class="card__media" alt="Image">`;
+    return `<img src="${this.source}" class="card__media">`;
   }
 }
 

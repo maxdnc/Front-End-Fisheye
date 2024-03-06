@@ -1,0 +1,37 @@
+.card {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card__media {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  padding-block: 10px;
+}
+
+.card__title {
+  color: #901c1c;
+  font-size: 24px;
+}
+
+.card__likes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card__likes-count {
+  color: #000;
+  font-family: Roboto;
+  font-size: 16px;
+}

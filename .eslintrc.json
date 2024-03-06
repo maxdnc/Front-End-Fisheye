@@ -11,6 +11,8 @@
   "rules": {
     "no-console": "off",
     "object-curly-newline": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "comma-dangle": "off",
+    "max-classes-per-file": "off"
   }
 }

@@ -1,35 +1,38 @@
 class ImageMedia {
-  constructor(source) {
+  constructor(source, title) {
     this.source = source;
+    this.title = title;
   }
 
   display() {
-    return `<img src="${this.source}" class="card__media">`;
+    return `<img src="${this.source}" class="card__media" alt="${this.title}" >`;
   }
 }
 
 class VideoMedia {
-  constructor(source) {
+  constructor(source, title) {
     this.source = source;
+    this.title = title;
   }
 
   display() {
-    return `<video class="card__media" controlsList="nodownload nofullscreen noremoteplayback"><source src="${this.source}" type="video/mp4"></video>`;
+    return `<video  class="card__media" aria-label="${this.title}" controlsList="nodownload nofullscreen noremoteplayback"><source src="${this.source}" type="video/mp4"></video>`;
   }
 }
 
 export default class MediaFactory {
-  constructor(type, source) {
+  constructor(type, source, title) {
     this.type = type;
     this.source = source;
+    this.title = title;
   }
 
   createMedia() {
     switch (this.type) {
       case 'image':
-        return new ImageMedia(this.source);
+        return new ImageMedia(this.source, this.title);
       case 'video':
-        return new VideoMedia(this.source);
+        return new VideoMedia(this.source, this.title);
       default:
         throw new Error(`Invalid media type: ${this.type}`);
     }

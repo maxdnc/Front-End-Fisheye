@@ -12,14 +12,14 @@ export default function createCardPhoto({
   const typeSource = video ? 'video' : 'image';
   const mediaFile = image || video;
   const pictureSource = `assets/Sample Photos/${photographerId}/${mediaFile}`;
-  const mediaObject = new MediaFactory(typeSource, pictureSource);
+  const mediaObject = new MediaFactory(typeSource, pictureSource, title);
   const displayMedia = mediaObject.createMedia().display();
 
   const heartIcon = heartSvg();
 
   return `
     <div class="card">
-    <a href="${idMedia}" aria-label="${title}">
+    <a href="${idMedia}"">
       ${displayMedia}
       </a>
         <div class="card__info">

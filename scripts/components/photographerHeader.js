@@ -1,4 +1,4 @@
-export default async function createPhotographerHeader({
+async function createPhotographerHeader({
   name,
   portrait,
   city,
@@ -16,3 +16,28 @@ export default async function createPhotographerHeader({
       <img src="${picture}" alt="${name}" class="photographer__portrait">
     `;
 }
+
+async function setupContactModal() {
+  const modal = document.getElementById('contact_modal');
+  const openButtonContactModal = document.querySelector('.contact_button');
+  const closeButtonContactModal = document.querySelector('.close_modal_button');
+
+  openButtonContactModal.addEventListener('click', () => {
+    modal.style.display = 'block';
+  });
+  closeButtonContactModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+}
+
+// create the header
+async function createHeader(photographerDetail) {
+  const photographerContainer = document.querySelector('.photograph-header');
+  const photographerHeader = await createPhotographerHeader(photographerDetail);
+  // display the data
+  photographerContainer.innerHTML = photographerHeader;
+  // add the event listener after the data is displayed
+  setupContactModal();
+}
+
+export default createHeader;

@@ -17,17 +17,19 @@ async function createPhotographerHeader({
     `;
 }
 
-async function setupContactModal() {
+async function setupContactModal({ name }) {
   const modal = document.getElementById('contact_modal');
   const openButtonContactModal = document.querySelector('.contact_button');
   const closeButtonContactModal = document.querySelector('.close_modal_button');
 
   openButtonContactModal.addEventListener('click', () => {
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
   });
   closeButtonContactModal.addEventListener('click', () => {
     modal.style.display = 'none';
   });
+  const nameInContact = document.querySelector('.name-in-contact');
+  nameInContact.innerHTML = name;
 }
 
 // create the header
@@ -37,7 +39,7 @@ async function createHeader(photographerDetail) {
   // display the data
   photographerContainer.innerHTML = photographerHeader;
   // add the event listener after the data is displayed
-  setupContactModal();
+  await setupContactModal(photographerDetail);
 }
 
 export default createHeader;

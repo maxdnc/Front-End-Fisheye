@@ -21,13 +21,25 @@ async function setupContactModal({ name }) {
   const modal = document.getElementById('contact_modal');
   const openButtonContactModal = document.querySelector('.contact_button');
   const closeButtonContactModal = document.querySelector('.close_modal_button');
+  const mainContent = document.querySelector('#main-photographer');
 
   openButtonContactModal.addEventListener('click', () => {
     modal.style.display = 'flex';
+    mainContent.setAttribute('aria-hidden', 'true');
+    closeButtonContactModal.focus();
   });
   closeButtonContactModal.addEventListener('click', () => {
     modal.style.display = 'none';
+    mainContent.setAttribute('aria-hidden', 'false');
   });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      mainContent.setAttribute('aria-hidden', 'false');
+    }
+  });
+
   const nameInContact = document.querySelector('.name-in-contact');
   nameInContact.innerHTML = name;
 }

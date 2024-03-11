@@ -1,4 +1,4 @@
-export default function createPhotographerHeader({
+export default async function createPhotographerHeader({
   name,
   portrait,
   city,
@@ -12,7 +12,7 @@ export default function createPhotographerHeader({
         <p class="photographer__location">${city}, ${country}</p>
         <p class="photographer__tagline">${tagline}</p>
       </div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button">Contactez-moi</button>
       <img src="${picture}" alt="${name}" class="photographer__portrait">
     `;
 }

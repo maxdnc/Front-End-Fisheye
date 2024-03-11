@@ -24,14 +24,23 @@
       <div class="photograph_media"></div>
     </main>
     <div id="contact_modal">
-      <div class="modal" role="dialog">
+      <div
+        class="modal"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-modal="true"
+      >
         <header>
-          <h2>
-            Contactez-moi <br />
+          <h2 id="modalTitle">
+            Contactez-moi<br />
             <span class="name-in-contact"></span>
           </h2>
 
-          <button class="close_modal_button" aria-label="Close Contact form">
+          <button
+            autofocus
+            class="close_modal_button"
+            aria-label="Close Contact form"
+          >
             <img
               class="image_close_modal_button"
               src="assets/icons/close.svg"
@@ -41,8 +50,29 @@
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first-name" id="first-name-label">Prénom</label>
+            <input
+              type="text"
+              id="first-name"
+              aria-labelledby="first-name-label"
+            />
+
+            <label for="last-name" id="last-name-label">Nom</label>
+            <input
+              type="text"
+              id="last-name"
+              aria-labelledby="last-name-label"
+            />
+
+            <label for="email" id="email-label">Email</label>
+            <input type="email" id="email" aria-labelledby="email-label" />
+
+            <label for="message" id="message-label">Votre message</label>
+            <textarea
+              id="message"
+              aria-labelledby="message-label"
+              style="height: 170px; width: 100%"
+            ></textarea>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>

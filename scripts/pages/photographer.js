@@ -2,6 +2,7 @@ import getPhotographe from '../utils/getPhotographe.js';
 import createHeader from '../components/photographerHeader.js';
 import getMediaFromPhotographer from '../utils/getMediaFromPhotographe.js';
 import createCardPhoto from '../components/CardPhoto.js';
+import onSubmit from '../utils/getContactFormValue.js';
 
 // get the id from the url
 const params = new URLSearchParams(window.location.search);
@@ -25,3 +26,7 @@ media.map((item) => {
   mediaContainer.innerHTML += cardPhoto;
   return null;
 });
+
+// get data form the form
+const contactForm = document.querySelector('#contact-modal-form');
+contactForm.addEventListener('submit', onSubmit);

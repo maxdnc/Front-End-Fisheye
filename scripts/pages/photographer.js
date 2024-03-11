@@ -1,5 +1,5 @@
 import getPhotographe from '../utils/getPhotographe.js';
-import createPhotographerHeader from '../components/photographerHeader.js';
+import createHeader from '../components/photographerHeader.js';
 import getMediaFromPhotographer from '../utils/getMediaFromPhotographe.js';
 import createCardPhoto from '../components/CardPhoto.js';
 
@@ -15,11 +15,7 @@ const media = await getMediaFromPhotographer(idPhotographe);
 console.log(media);
 
 // create the header
-const photographerHeader = createPhotographerHeader(photographerDetail);
-
-// display the data
-const photographerContainer = document.querySelector('.photograph-header');
-photographerContainer.innerHTML = photographerHeader;
+createHeader(photographerDetail);
 
 // display the media
 const mediaContainer = document.querySelector('.photograph_media');
@@ -27,4 +23,5 @@ const mediaContainer = document.querySelector('.photograph_media');
 media.map((item) => {
   const cardPhoto = createCardPhoto(item);
   mediaContainer.innerHTML += cardPhoto;
+  return null;
 });

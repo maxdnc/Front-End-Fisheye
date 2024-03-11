@@ -12,8 +12,8 @@ const idPhotographe = params.get('id');
 const photographerDetail = await getPhotographe(idPhotographe);
 
 // get the media from the photographer
-const media = await getMediaFromPhotographer(idPhotographe);
-console.log(media);
+const mediaFromPhotographer = await getMediaFromPhotographer(idPhotographe);
+console.log(mediaFromPhotographer);
 
 // create the header
 createHeader(photographerDetail);
@@ -21,7 +21,7 @@ createHeader(photographerDetail);
 // display the media
 const mediaContainer = document.querySelector('.photograph_media');
 
-media.map((item) => {
+mediaFromPhotographer.map((item) => {
   const cardPhoto = createCardPhoto(item);
   mediaContainer.innerHTML += cardPhoto;
   return null;

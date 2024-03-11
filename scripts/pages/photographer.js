@@ -1,7 +1,8 @@
 import getPhotographe from '../utils/getPhotographe.js';
-import createPhotographerHeader from '../components/photographerHeader.js';
+import createHeader from '../components/photographerHeader.js';
 import getMediaFromPhotographer from '../utils/getMediaFromPhotographe.js';
 import createCardPhoto from '../components/CardPhoto.js';
+import onSubmit from '../utils/getContactFormValue.js';
 
 // get the id from the url
 const params = new URLSearchParams(window.location.search);
@@ -11,20 +12,21 @@ const idPhotographe = params.get('id');
 const photographerDetail = await getPhotographe(idPhotographe);
 
 // get the media from the photographer
-const media = await getMediaFromPhotographer(idPhotographe);
-console.log(media);
+const mediaFromPhotographer = await getMediaFromPhotographer(idPhotographe);
+console.log(mediaFromPhotographer);
 
 // create the header
-const photographerHeader = createPhotographerHeader(photographerDetail);
-
-// display the data
-const photographerContainer = document.querySelector('.photograph-header');
-photographerContainer.innerHTML = photographerHeader;
+createHeader(photographerDetail);
 
 // display the media
 const mediaContainer = document.querySelector('.photograph_media');
 
-media.map((item) => {
+mediaFromPhotographer.map((item) => {
   const cardPhoto = createCardPhoto(item);
   mediaContainer.innerHTML += cardPhoto;
+  return null;
 });
+
+// get data form the form
+const contactForm = document.querySelector('#contact-modal-form');
+contactForm.addEventListener('submit', onSubmit);

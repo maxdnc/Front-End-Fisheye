@@ -1,6 +1,10 @@
 import MediaFactory from '../utils/MediaFactory.js';
 
 const lightboxMediaContainer = document.querySelector('.current-media');
+const lightboxCloseButton = document.querySelector(
+  '.close_lightbox_modal_button'
+);
+const mainContent = document.querySelector('#main-photographer');
 
 // Function to create and display media in the lightbox
 async function displayMediaInLightbox({ image, video, title, photographerId }) {
@@ -31,22 +35,17 @@ async function displayTitleInLightBox({ title }) {
 }
 
 // Close the lightbox
-const lightboxCloseButton = document.querySelector(
-  '.close_lightbox_modal_button'
-);
+
 lightboxCloseButton.addEventListener('click', () => {
   const lightBox = document.querySelector('#lightbox_modal');
   lightBox.style.display = 'none';
+  mainContent.setAttribute('aria-hidden', 'false');
 });
 
 // Function to manage the media in the lightbox
 async function handleLightboxMedia(dataFromPhotographer) {
   const lightboxLinks = document.querySelectorAll('.link-to-lightBox');
   const lightBox = document.querySelector('#lightbox_modal');
-  const mainContent = document.querySelector('#main-photographer');
-  const closeButtonLightBoxModal = document.querySelector(
-    '.close_lightbox_modal_button'
-  );
 
   let currentMediaIndex = 0;
 
@@ -56,7 +55,7 @@ async function handleLightboxMedia(dataFromPhotographer) {
 
       lightBox.style.display = 'flex';
       mainContent.setAttribute('aria-hidden', 'true');
-      closeButtonLightBoxModal.focus();
+      lightboxCloseButton.focus();
 
       const id = Number(link.id);
       const clickedMedia = dataFromPhotographer.find((item) => item.id === id);
@@ -65,6 +64,14 @@ async function handleLightboxMedia(dataFromPhotographer) {
       await displayMediaInLightbox(clickedMedia);
       await displayTitleInLightBox(dataFromPhotographer[currentMediaIndex]);
     });
+  });
+
+  // close the lightbox with the escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      lightBox.style.display = 'none';
+      mainContent.setAttribute('aria-hidden', 'false');
+    }
   });
 
   // Next and previous buttons

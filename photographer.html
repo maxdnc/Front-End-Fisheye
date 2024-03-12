@@ -24,25 +24,151 @@
       <div class="photograph_media"></div>
     </main>
     <div id="contact_modal">
-      <div class="modal">
+      <div
+        class="modal"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-modal="true"
+      >
         <header>
-          <h2>Contactez-moi</h2>
-          <img
-            src="assets/icons/close.svg"
-            alt="close modal"
-            onclick="closeModal()"
-          />
+          <h2 id="modalTitle">
+            Contactez-moi<br />
+            <span class="name-in-contact"></span>
+          </h2>
+
+          <button
+            autofocus
+            class="close_modal_button"
+            aria-label="Close Contact form"
+          >
+            <img
+              class="image_close_modal_button"
+              src="assets/icons/close.svg"
+              alt="Close Contact form"
+              aria-hidden="true"
+            />
+          </button>
         </header>
-        <form>
+        <form id="contact-modal-form">
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first-name" id="first-name-label">Prénom</label>
+            <input
+              type="text"
+              id="first-name"
+              aria-labelledby="first-name-label"
+            />
+
+            <label for="last-name" id="last-name-label">Nom</label>
+            <input
+              type="text"
+              id="last-name"
+              aria-labelledby="last-name-label"
+            />
+
+            <label for="email" id="email-label">Email</label>
+            <input type="email" id="email" aria-labelledby="email-label" />
+
+            <label for="message" id="message-label">Votre message</label>
+            <textarea
+              id="message"
+              aria-labelledby="message-label"
+              style="height: 170px; width: 100%"
+            ></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Send">Envoyer</button>
         </form>
       </div>
     </div>
+
+    <div id="lightbox_modal">
+      <div
+        class="lightbox-modal-content"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-modal="true"
+      >
+        <div class="current-media"></div>
+
+        <!-- close button  -->
+        <button
+          autofocus
+          class="close_lightbox_modal_button"
+          aria-label="Close dialog"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 42 42"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z"
+              fill="#911C1C"
+            />
+          </svg>
+        </button>
+
+        <!-- previous button -->
+        <button class="lightbox-button-previous" aria-label="Previous Image">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M61.6399 66.36L43.3199 48L61.6399 29.64L55.9999 24L31.9999 48L55.9999 72L61.6399 66.36Z"
+              fill="#911C1C"
+            />
+          </svg>
+        </button>
+
+        <!-- next button -->
+        <button class="lightbox-button-next" aria-label="Next Image">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M61.6399 66.36L43.3199 48L61.6399 29.64L55.9999 24L31.9999 48L55.9999 72L61.6399 66.36Z"
+              fill="#911C1C"
+            />
+          </svg>
+        </button>
+
+        <h3 class="lightbox_title"></h3>
+      </div>
+    </div>
+
+    <div class="like-counter-box">
+      <div class="like-container">
+        <span class="like-counter">0</span>
+        <svg
+          width="18"
+          height="19"
+          viewBox="0 0 18 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.125 18.35L7.85625 17.03C3.35 12.36 0.375 9.28 0.375 5.5C0.375 2.42 2.4925 0 5.1875 0C6.71 0 8.17125 0.81 9.125 2.09C10.0787 0.81 11.54 0 13.0625 0C15.7575 0 17.875 2.42 17.875 5.5C17.875 9.28 14.9 12.36 10.3938 17.04L9.125 18.35Z"
+            fill="black"
+          />
+        </svg>
+      </div>
+      <div class="like-container">
+        <span class="day-price">0</span><span>€ / jour</span>
+      </div>
+    </div>
+
     <script src="./scripts/pages/photographer.js" type="module"></script>
-    <script src="./scripts/utils/contactForm.js" type="module"></script>
   </body>
 </html>

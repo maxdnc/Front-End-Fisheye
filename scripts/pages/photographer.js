@@ -10,11 +10,9 @@ const idPhotographe = params.get('id');
 
 // get the data from the photographer
 const photographerDetail = await getPhotographe(idPhotographe);
-console.log(photographerDetail);
 
 // get the media from the photographer
 const mediaFromPhotographer = await getMediaFromPhotographer(idPhotographe);
-console.log(mediaFromPhotographer);
 
 // create the header
 createHeader(photographerDetail);

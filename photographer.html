@@ -44,7 +44,8 @@
             <img
               class="image_close_modal_button"
               src="assets/icons/close.svg"
-              alt="close modal"
+              alt="Close Contact form"
+              aria-hidden="true"
             />
           </button>
         </header>
@@ -78,6 +79,75 @@
         </form>
       </div>
     </div>
+
+    <div id="lightbox_modal">
+      <div
+        class="lightbox-modal-content"
+        role="dialog"
+        aria-labelledby="modalTitle"
+        aria-modal="true"
+      >
+        <div class="current-media"></div>
+
+        <!-- close button  -->
+        <button
+          autofocus
+          class="close_lightbox_modal_button"
+          aria-label="Close dialog"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 42 42"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z"
+              fill="#911C1C"
+            />
+          </svg>
+        </button>
+
+        <!-- previous button -->
+        <button class="lightbox-button-previous" aria-label="Previous Image">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M61.6399 66.36L43.3199 48L61.6399 29.64L55.9999 24L31.9999 48L55.9999 72L61.6399 66.36Z"
+              fill="#911C1C"
+            />
+          </svg>
+        </button>
+
+        <!-- next button -->
+        <button class="lightbox-button-next" aria-label="Next Image">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M61.6399 66.36L43.3199 48L61.6399 29.64L55.9999 24L31.9999 48L55.9999 72L61.6399 66.36Z"
+              fill="#911C1C"
+            />
+          </svg>
+        </button>
+
+        <h3 class="lightbox_title"></h3>
+      </div>
+    </div>
+
     <script src="./scripts/pages/photographer.js" type="module"></script>
   </body>
 </html>

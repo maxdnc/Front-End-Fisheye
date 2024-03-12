@@ -12,7 +12,7 @@ async function createPhotographerHeader({
         <p class="photographer__location">${city}, ${country}</p>
         <p class="photographer__tagline">${tagline}</p>
       </div>
-      <button class="contact_button">Contactez-moi</button>
+      <button class="contact_button" aria-label="Contact Me">Contactez-moi</button>
       <img src="${picture}" alt="${name}" class="photographer__portrait">
     `;
 }

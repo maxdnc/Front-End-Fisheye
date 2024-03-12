@@ -3,7 +3,7 @@ import createHeader from '../components/photographerHeader.js';
 import getMediaFromPhotographer from '../utils/getMediaFromPhotographe.js';
 import createCardPhoto from '../components/CardPhoto.js';
 import onSubmit from '../utils/getContactFormValue.js';
-
+import handleLightboxMedia from '../components/LightBox.js';
 // get the id from the url
 const params = new URLSearchParams(window.location.search);
 const idPhotographe = params.get('id');
@@ -13,7 +13,6 @@ const photographerDetail = await getPhotographe(idPhotographe);
 
 // get the media from the photographer
 const mediaFromPhotographer = await getMediaFromPhotographer(idPhotographe);
-console.log(mediaFromPhotographer);
 
 // create the header
 createHeader(photographerDetail);
@@ -30,3 +29,6 @@ mediaFromPhotographer.map((item) => {
 // get data form the form
 const contactForm = document.querySelector('#contact-modal-form');
 contactForm.addEventListener('submit', onSubmit);
+
+// lightbox
+handleLightboxMedia(mediaFromPhotographer);

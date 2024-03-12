@@ -24,7 +24,7 @@ export default function createCardPhoto({
 
   return `
     <div class="card">
-    <a id="${idMedia}" class="link-to-lightBox" href="#">
+    <a id="${idMedia}" class="link-to-lightBox" href="#" aria-label="${title} closeup view">
       ${displayMedia}
       </a>
         <div class="card__info">

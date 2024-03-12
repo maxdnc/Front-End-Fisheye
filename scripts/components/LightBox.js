@@ -68,7 +68,7 @@ async function handleLightboxMedia(dataFromPhotographer) {
 
   // close the lightbox with the escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && lightBox.style.display === 'flex') {
       lightBox.style.display = 'none';
       mainContent.setAttribute('aria-hidden', 'false');
     }
@@ -80,7 +80,7 @@ async function handleLightboxMedia(dataFromPhotographer) {
     '.lightbox-button-previous'
   );
 
-  nextMediaButton.addEventListener('click', () => {
+  function displayNextMedia() {
     currentMediaIndex += 1;
     if (currentMediaIndex >= dataFromPhotographer.length) {
       currentMediaIndex = 0; // reset the index
@@ -88,9 +88,9 @@ async function handleLightboxMedia(dataFromPhotographer) {
     const nextMedia = dataFromPhotographer[currentMediaIndex];
     displayMediaInLightbox(nextMedia);
     displayTitleInLightBox(nextMedia);
-  });
+  }
 
-  previousMediaButton.addEventListener('click', () => {
+  function displayPreviousMedia() {
     currentMediaIndex -= 1;
     if (currentMediaIndex < 0) {
       currentMediaIndex = dataFromPhotographer.length - 1; // reset the index
@@ -98,6 +98,21 @@ async function handleLightboxMedia(dataFromPhotographer) {
     const previousMedia = dataFromPhotographer[currentMediaIndex];
     displayMediaInLightbox(previousMedia);
     displayTitleInLightBox(previousMedia);
+  }
+
+  nextMediaButton.addEventListener('click', displayNextMedia);
+  previousMediaButton.addEventListener('click', displayPreviousMedia);
+
+  // Next and previous buttons with keyboard
+
+  window.addEventListener('keydown', (e) => {
+    console.log(e.key);
+    if (e.key === 'ArrowRight' && lightBox.style.display === 'flex') {
+      displayNextMedia();
+    }
+    if (e.key === 'ArrowLeft' && lightBox.style.display === 'flex') {
+      displayPreviousMedia();
+    }
   });
 }
 

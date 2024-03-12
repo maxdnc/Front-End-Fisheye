@@ -31,7 +31,8 @@ export default function createCardPhoto({
           <p class="card__title">${title}</p>
           <div class="card__likes">
             <p class="card__likes-count">${likes}</p>
-            ${heartIcon}
+            <button class="card__likes-button" aria-label="likes">${heartIcon}</button>
+      
           </div>
       `;
 }

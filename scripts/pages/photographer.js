@@ -4,6 +4,11 @@ import getMediaFromPhotographer from '../utils/getMediaFromPhotographe.js';
 import createCardPhoto from '../components/CardPhoto.js';
 import onSubmit from '../utils/getContactFormValue.js';
 import handleLightboxMedia from '../components/LightBox.js';
+import {
+  displayLikesBoxContent,
+  displayDayPrice,
+  manageLikeCard,
+} from '../components/LikeCounter.js';
 // get the id from the url
 const params = new URLSearchParams(window.location.search);
 const idPhotographe = params.get('id');
@@ -32,3 +37,11 @@ contactForm.addEventListener('submit', onSubmit);
 
 // lightbox
 handleLightboxMedia(mediaFromPhotographer);
+
+// counter likes box
+displayLikesBoxContent(mediaFromPhotographer);
+displayDayPrice(photographerDetail);
+
+// card toggle like button
+const likeButtons = document.querySelectorAll('.card__likes-button');
+manageLikeCard(likeButtons);

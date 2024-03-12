@@ -15,6 +15,19 @@ async function displayMediaInLightbox({ image, video, title, photographerId }) {
   );
   const mediaHTML = mediaObject.createMedia().display();
   lightboxMediaContainer.innerHTML = mediaHTML;
+  if (mediaType === 'video') {
+    // eslint-disable-next-line operator-linebreak
+    const mediaElement =
+      lightboxMediaContainer.querySelector('.lightbox__media');
+    mediaElement.setAttribute('controls', true);
+    mediaElement.setAttribute('loop', true);
+    mediaElement.setAttribute('autoplay', true);
+  }
+}
+
+async function displayTitleInLightBox({ title }) {
+  const titleLightBox = document.querySelector('.lightbox_title');
+  titleLightBox.textContent = title;
 }
 
 // Close the lightbox
@@ -22,24 +35,32 @@ const lightboxCloseButton = document.querySelector(
   '.close_lightbox_modal_button'
 );
 lightboxCloseButton.addEventListener('click', () => {
-  const lightbox = document.querySelector('#lightbox_modal');
-  lightbox.style.display = 'none';
+  const lightBox = document.querySelector('#lightbox_modal');
+  lightBox.style.display = 'none';
 });
 
 // Function to manage the media in the lightbox
-function handleLightboxMedia(dataFromPhotographer) {
-  let currentMediaIndex = 0;
+async function handleLightboxMedia(dataFromPhotographer) {
   const lightboxLinks = document.querySelectorAll('.link-to-lightBox');
+  const lightBox = document.querySelector('#lightbox_modal');
+
+  let currentMediaIndex = 0;
+
   lightboxLinks.forEach((link) => {
     link.addEventListener('click', async (e) => {
       e.preventDefault();
+
+      lightBox.style.display = 'flex';
       const id = Number(link.id);
       const clickedMedia = dataFromPhotographer.find((item) => item.id === id);
       currentMediaIndex = dataFromPhotographer.indexOf(clickedMedia);
-      displayMediaInLightbox(clickedMedia);
+
+      await displayMediaInLightbox(clickedMedia);
+      await displayTitleInLightBox(dataFromPhotographer[currentMediaIndex]);
     });
   });
 
+  // Next and previous buttons
   const nextMediaButton = document.querySelector('.lightbox-button-next');
   const previousMediaButton = document.querySelector(
     '.lightbox-button-previous'
@@ -52,6 +73,7 @@ function handleLightboxMedia(dataFromPhotographer) {
     }
     const nextMedia = dataFromPhotographer[currentMediaIndex];
     displayMediaInLightbox(nextMedia);
+    displayTitleInLightBox(nextMedia);
   });
 
   previousMediaButton.addEventListener('click', () => {
@@ -61,6 +83,7 @@ function handleLightboxMedia(dataFromPhotographer) {
     }
     const previousMedia = dataFromPhotographer[currentMediaIndex];
     displayMediaInLightbox(previousMedia);
+    displayTitleInLightBox(previousMedia);
   });
 }
 

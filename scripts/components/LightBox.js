@@ -43,6 +43,10 @@ lightboxCloseButton.addEventListener('click', () => {
 async function handleLightboxMedia(dataFromPhotographer) {
   const lightboxLinks = document.querySelectorAll('.link-to-lightBox');
   const lightBox = document.querySelector('#lightbox_modal');
+  const mainContent = document.querySelector('#main-photographer');
+  const closeButtonLightBoxModal = document.querySelector(
+    '.close_lightbox_modal_button'
+  );
 
   let currentMediaIndex = 0;
 
@@ -51,6 +55,9 @@ async function handleLightboxMedia(dataFromPhotographer) {
       e.preventDefault();
 
       lightBox.style.display = 'flex';
+      mainContent.setAttribute('aria-hidden', 'true');
+      closeButtonLightBoxModal.focus();
+
       const id = Number(link.id);
       const clickedMedia = dataFromPhotographer.find((item) => item.id === id);
       currentMediaIndex = dataFromPhotographer.indexOf(clickedMedia);

@@ -15,29 +15,54 @@ import {
   sortMedia,
 } from '../components/FilterMedia.js';
 
-// get the id from the url
+// Get the id from the url
 const params = new URLSearchParams(window.location.search);
 const idPhotographe = params.get('id');
 
-// get the data from the photographer
+// Get the data from the photographer
 const photographerDetail = await getPhotographe(idPhotographe);
-// display the media
+
+// Display the media
 const mediaContainer = document.querySelector('.photograph_media');
 
-// get the media from the photographer
+// Get the media from the photographer
 const mediaFromPhotographer = await getMediaFromPhotographer(idPhotographe);
 let currentMedia = mediaFromPhotographer;
 
-// filter media
-filterMedia();
+// Function to update media display
+function updateMediaDisplay(media) {
+  // Clear the current media
+  mediaContainer.innerHTML = '';
 
+  // Add the sorted media to the container
+  media.map((item) => {
+    const cardPhoto = createCardPhoto(item);
+    mediaContainer.innerHTML += cardPhoto;
+    return null;
+  });
+
+  // Call manageLikeCard after the media cards are added to the DOM
+  const likeButtons = document.querySelectorAll('.card__likes-button');
+  manageLikeCard(likeButtons);
+
+  // Update lightbox
+  handleLightboxMedia(media);
+}
+
+// Filter media
+filterMedia();
+const popularityOption = document.querySelector('#option-popularity');
+// Sort the media by popularity
+currentMedia = sortMedia(popularityOption, mediaFromPhotographer);
+// Initial media display
+updateMediaDisplay(currentMedia);
+
+// Get DOM elements
 const button = document.querySelector('#media-filter-button');
 const dropdown = document.querySelector('#media-filter-options');
 const options = dropdown.querySelectorAll('button');
 const buttonContent = button.querySelector('#filter-selected');
 const buttonIcon = button.querySelector('.arrow-down');
-
-let selectedOption = null;
 
 // Add an event listener to each option
 options.forEach((option) => {
@@ -50,45 +75,21 @@ options.forEach((option) => {
       dropdown,
       options
     );
-    selectedOption = option;
-    currentMedia = sortMedia(selectedOption, mediaFromPhotographer);
-    // Clear the current media
-    mediaContainer.innerHTML = '';
-    currentMedia.map((item) => {
-      const cardPhoto = createCardPhoto(item);
-      mediaContainer.innerHTML += cardPhoto;
-      return null;
-    });
-    // Call manageLikeCard after the media cards are added to the DOM
-    const likeButtons = document.querySelectorAll('.card__likes-button');
-    manageLikeCard(likeButtons);
-
-    handleLightboxMedia(currentMedia);
-
-    // Add the sorted media to the container
+    currentMedia = sortMedia(option, mediaFromPhotographer);
+    updateMediaDisplay(currentMedia);
   });
 });
 
-// create the header
+// Create the header
 createHeader(photographerDetail);
 
-currentMedia.map((item) => {
-  const cardPhoto = createCardPhoto(item);
-  mediaContainer.innerHTML += cardPhoto;
-  return null;
-});
+// Initial media display
+updateMediaDisplay(currentMedia);
 
-// get data form the form
+// Get data form the form
 const contactForm = document.querySelector('#contact-modal-form');
 contactForm.addEventListener('submit', onSubmit);
 
-// lightbox
-handleLightboxMedia(currentMedia);
-
-// counter likes box
+// Counter likes box
 displayLikesBoxContent(currentMedia);
 displayDayPrice(photographerDetail);
-
-// card toggle like button
-const likeButtons = document.querySelectorAll('.card__likes-button');
-manageLikeCard(likeButtons);

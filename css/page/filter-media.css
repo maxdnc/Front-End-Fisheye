@@ -1,0 +1,100 @@
+.media-filter {
+  margin: 0 100px;
+  display: flex;
+  align-items: center;
+  height: 142px;
+  padding: 0 1rem;
+}
+.container-filter {
+  display: inline-block;
+  position: relative;
+}
+
+#media-filter-button {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #901c1c;
+  color: white;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding-block: 23px;
+  width: 170px;
+  border: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 12px;
+  cursor: pointer;
+}
+#media-filter-button .arrow-down {
+  transition: transform 0.3s ease;
+}
+#media-filter-button .arrow-down.active {
+  transform: rotate(180deg);
+}
+
+#media-filter-button.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-bottom: 14px;
+}
+
+#media-filter-options {
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  display: none;
+  width: 170px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#media-filter-options.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#media-filter-options button {
+  background-color: #901c1c;
+  color: white;
+  border: none;
+  padding-block: 0.5rem;
+  color: #fff;
+  text-align: left;
+  padding-block: 14px;
+  padding-left: 20px;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  cursor: pointer;
+  /* Add other styles as needed */
+}
+
+#media-filter-button:hover,
+#media-filter-options button:hover {
+  background-color: #b01f1f; /* Darker red for hover state */
+}
+
+#media-filter-label {
+  color: #000;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-right: 25px;
+}

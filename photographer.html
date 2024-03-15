@@ -21,6 +21,54 @@
     </header>
     <main id="main-photographer">
       <div class="photograph-header"></div>
+
+      <div class="media-filter">
+        <label id="media-filter-label" for="media-filter-button"
+          >Trier par
+        </label>
+        <div class="container-filter">
+          <button
+            id="media-filter-button"
+            role="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+          >
+            <span id="filter-selected">Select filter</span>
+
+            <span class="arrow-down" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_120_430)">
+                  <path
+                    d="M22.12 11.4531L16 17.5598L9.88 11.4531L8 13.3331L16 21.3331L24 13.3331L22.12 11.4531Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_120_430">
+                    <rect width="32" height="32" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+          </button>
+          <div
+            id="media-filter-options"
+            role="listbox"
+            aria-activedescendant=""
+            aria-labelledby="media-filter-label"
+          >
+            <button id="option-popularity" role="option">Popularity</button>
+            <button id="option-date" role="option">Date</button>
+            <button id="option-title" role="option">Title</button>
+          </div>
+        </div>
+      </div>
       <div class="photograph_media"></div>
     </main>
     <div id="contact_modal">
@@ -168,6 +216,7 @@
         <span class="day-price">0</span><span>€ / jour</span>
       </div>
     </div>
+    <div class="filter-box"></div>
 
     <script src="./scripts/pages/photographer.js" type="module"></script>
   </body>

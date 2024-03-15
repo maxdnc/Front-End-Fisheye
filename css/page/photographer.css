@@ -2,6 +2,7 @@
 @import url('card-photo.css');
 @import url('light-box.css');
 @import url('like-counter.css');
+@import url('filter-media.css');
 
 #contact_modal {
   display: none;

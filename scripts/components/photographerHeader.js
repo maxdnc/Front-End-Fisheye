@@ -18,24 +18,24 @@ async function createPhotographerHeader({
 }
 
 async function setupContactModal({ name }) {
-  const modal = document.getElementById('contact_modal');
+  const modalContact = document.querySelector('.contact_modal');
   const openButtonContactModal = document.querySelector('.contact_button');
   const closeButtonContactModal = document.querySelector('.close_modal_button');
   const mainContent = document.querySelector('#main-photographer');
 
   openButtonContactModal.addEventListener('click', () => {
-    modal.style.display = 'flex';
+    modalContact.showModal();
     mainContent.setAttribute('aria-hidden', 'true');
     closeButtonContactModal.focus();
   });
   closeButtonContactModal.addEventListener('click', () => {
-    modal.style.display = 'none';
+    modalContact.close();
     mainContent.setAttribute('aria-hidden', 'false');
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal.style.display === 'flex') {
-      modal.style.display = 'none';
+    if (event.key === 'Escape' && modalContact.style.display !== 'null') {
+      modalContact.close();
       mainContent.setAttribute('aria-hidden', 'false');
     }
   });

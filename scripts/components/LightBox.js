@@ -5,6 +5,7 @@ const lightboxCloseButton = document.querySelector(
   '.close_lightbox_modal_button'
 );
 const mainContent = document.querySelector('#main-photographer');
+const dialogLightBox = document.querySelector('.lightbox-modal-content');
 
 // Function to create and display media in the lightbox
 async function displayMediaInLightbox({ image, video, title, photographerId }) {
@@ -37,15 +38,13 @@ async function displayTitleInLightBox({ title }) {
 // Close the lightbox
 
 lightboxCloseButton.addEventListener('click', () => {
-  const lightBox = document.querySelector('#lightbox_modal');
-  lightBox.style.display = 'none';
+  dialogLightBox.close();
   mainContent.setAttribute('aria-hidden', 'false');
 });
 
 // Function to manage the media in the lightbox
 async function handleLightboxMedia(dataFromPhotographer) {
   const lightboxLinks = document.querySelectorAll('.link-to-lightBox');
-  const lightBox = document.querySelector('#lightbox_modal');
 
   let currentMediaIndex = 0;
 
@@ -53,7 +52,8 @@ async function handleLightboxMedia(dataFromPhotographer) {
     link.addEventListener('click', async (e) => {
       e.preventDefault();
 
-      lightBox.style.display = 'flex';
+      dialogLightBox.showModal();
+
       mainContent.setAttribute('aria-hidden', 'true');
       lightboxCloseButton.focus();
 
@@ -68,8 +68,8 @@ async function handleLightboxMedia(dataFromPhotographer) {
 
   // close the lightbox with the escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightBox.style.display === 'flex') {
-      lightBox.style.display = 'none';
+    if (e.key === 'Escape' && dialogLightBox.style.display === 'block') {
+      dialogLightBox.close();
       mainContent.setAttribute('aria-hidden', 'false');
     }
   });
@@ -107,10 +107,10 @@ async function handleLightboxMedia(dataFromPhotographer) {
 
   window.addEventListener('keydown', (e) => {
     console.log(e.key);
-    if (e.key === 'ArrowRight' && lightBox.style.display === 'flex') {
+    if (e.key === 'ArrowRight' && dialogLightBox.style.display !== 'null') {
       displayNextMedia();
     }
-    if (e.key === 'ArrowLeft' && lightBox.style.display === 'flex') {
+    if (e.key === 'ArrowLeft' && dialogLightBox.style.display !== 'null') {
       displayPreviousMedia();
     }
   });

@@ -18,7 +18,7 @@ class VideoMedia {
   }
 
   display() {
-    return `<video class="${this.className}" aria-label="${this.title}" controlsList="nodownload nofullscreen noremoteplayback"><source src="${this.source}" type="video/mp4"></video>`;
+    return `<video class="${this.className}" aria-label="${this.title}" ><source src="${this.source}" type="video/mp4"></video>`;
   }
 }
 

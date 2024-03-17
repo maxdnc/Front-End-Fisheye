@@ -11,7 +11,7 @@ const dialogLightBox = document.querySelector('.lightbox-modal-content');
 async function displayMediaInLightbox({ image, video, title, photographerId }) {
   const mediaType = video ? 'video' : 'image';
   const mediaFileName = image || video;
-  const mediaFilePath = `assets/Sample Photos/${photographerId}/${mediaFileName}`;
+  const mediaFilePath = `assets/Sample_Photos/${photographerId}/${mediaFileName}`;
   const mediaObject = new MediaFactory(
     mediaType,
     mediaFilePath,

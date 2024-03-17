@@ -11,7 +11,7 @@ export default function createCardPhoto({
 }) {
   const typeSource = video ? 'video' : 'image';
   const mediaFile = image || video;
-  const pictureSource = `assets/Sample Photos/${photographerId}/${mediaFile}`;
+  const pictureSource = `assets/Sample_Photos/${photographerId}/${mediaFile}`;
   const mediaObject = new MediaFactory(
     typeSource,
     pictureSource,

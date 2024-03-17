@@ -5,7 +5,7 @@ async function createPhotographerHeader({
   country,
   tagline,
 }) {
-  const picture = `assets/Sample Photos/Photographers_ID_Photos/${portrait}`;
+  const picture = `assets/Sample_Photos/Photographers_ID_Photos/${portrait}`;
   return `
       <div>
         <h1 class="photographer__name">${name}</h1>

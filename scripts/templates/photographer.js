@@ -1,7 +1,7 @@
 export default function photographerTemplate(data) {
   const { name, portrait, city, country, tagline, price, id } = data;
 
-  const picture = `assets/Sample Photos/Photographers ID Photos/${portrait}`;
+  const picture = `assets/Sample_Photos/Photographers_ID_Photos/${portrait}`;
 
   const template = `
       <a href="photographer.html?id=${id}" class="link" aria-label=${name}>

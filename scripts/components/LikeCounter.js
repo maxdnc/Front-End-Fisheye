@@ -17,7 +17,7 @@ function manageLikeCard(likeButtons) {
     const likesBox = document.querySelector('.like-counter');
 
     button.addEventListener('click', () => {
-      let likes = parseInt(likeCounterCard.textContent, 10);
+      let likes = parseInt(likeCounterCard.textContent, 10); // transform string to number
       let totalLikes = parseInt(likesBox.textContent, 10);
 
       if (button.classList.contains('liked')) {

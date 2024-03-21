@@ -29,7 +29,7 @@ export function sortMedia(option, media) {
     }
     if (option.id === 'option-title') {
       // Sort by title in ascending order
-      return a.title.localeCompare(b.title);
+      return a.title.localeCompare(b.title); // compare character chain in ascending order
     }
 
     // Default sort order

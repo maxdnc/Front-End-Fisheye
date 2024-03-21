@@ -9,10 +9,10 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "off",
-    "object-curly-newline": "off",
-    "import/extensions": "off",
-    "comma-dangle": "off",
-    "max-classes-per-file": "off"
+    "no-console": "off", // Désactive l'avertissement pour l'utilisation de console.log() et d'autres fonctions de console.
+    "object-curly-newline": "off", // Désactive l'avertissement pour le formatage des objets sur plusieurs lignes.
+    "import/extensions": "off", // Désactive l'avertissement pour les extensions de fichier lors de l'importation de modules.
+    "comma-dangle": "off", // Désactive l'avertissement pour l'omission de virgules en fin de ligne.
+    "max-classes-per-file": "off" // Désactive l'avertissement pour le nombre de classes dans un fichier.
   }
 }

@@ -109,9 +109,11 @@ async function handleLightboxMedia(dataFromPhotographer) {
     console.log(e.key);
     if (e.key === 'ArrowRight' && dialogLightBox.style.display !== 'null') {
       displayNextMedia();
+      nextMediaButton.focus();
     }
     if (e.key === 'ArrowLeft' && dialogLightBox.style.display !== 'null') {
       displayPreviousMedia();
+      previousMediaButton.focus();
     }
   });
 }
